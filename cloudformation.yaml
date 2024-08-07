@@ -231,7 +231,7 @@ Resources:
       Type: AWS::EC2::Instance
       Properties:
           LaunchTemplate: 
-                LaunchTemplateName: IMDSv2
+                LaunchTemplateName: IMDSv2 
                 Version: 1 
           ImageId: !Ref LatestImageId
           InstanceType: "t2.large"
@@ -260,7 +260,7 @@ Resources:
           Tags: 
             - 
               Key: "Name"
-              Value: "TranscribeSubtitling/EC2Instance"
+              Value: "TranscribeSubtitling/Instance"
           HibernationOptions: 
               Configured: false
           EnclaveOptions: 
