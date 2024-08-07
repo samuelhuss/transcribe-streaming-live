@@ -230,6 +230,9 @@ Resources:
   EC2Instance:
       Type: AWS::EC2::Instance
       Properties:
+          LaunchTemplate: 
+                LaunchTemplateName: IMDSv2
+                Version: 1 
           ImageId: !Ref LatestImageId
           InstanceType: "t2.large"
           KeyName: !If [KeyPairExists, !Ref EC2KeyPairName, !Ref 'AWS::NoValue']
@@ -296,7 +299,7 @@ Resources:
               apt install build-essential -y
               apt install -y cmake
               cd /
-              git clone https://github.com/aws-samples/amazon-transcribe-streaming-live-closed-captions transcribe
+              git clone https://github.com/samuelhuss/transcribe-streaming-live.git transcribe
               setfacl -R -m u:www-data:rwx /transcribe
               cd /transcribe
               chmod +x start.sh
