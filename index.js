@@ -438,7 +438,6 @@ function snapping(TranscribeStreamData) {
 };
 
 const translateText = async (text, targetLanguage) => {
-  console.log('starting transcribe');
   const translateClient = new TranslateClient({ region: REGION });
   try {
     const command = new TranslateTextCommand({
@@ -451,7 +450,7 @@ const translateText = async (text, targetLanguage) => {
     return response.TranslatedTexts[0];
   } catch (error) {
     console.error('Error translating text:', error);
-    return text; // Fallback to original text if translation fails
+    return 'Erro'; // Fallback to original text if translation fails
   }
 };
 
