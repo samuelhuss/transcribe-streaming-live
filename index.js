@@ -450,7 +450,7 @@ const translateText = async (text, targetLanguage) => {
     return response.TranslatedTexts[0];
   } catch (error) {
     console.error('Error translating text:', error);
-    return 'Erro'; // Fallback to original text if translation fails
+    return error; // Fallback to original text if translation fails
   }
 };
 
