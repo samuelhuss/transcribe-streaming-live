@@ -443,18 +443,16 @@ const translateText = async (text, targetLanguage) => {
     const command = new TranslateTextCommand({
       SourceLanguageCode: 'en', // or detect dynamically
       TargetLanguageCode: targetLanguage,
-      TextList: [text]
+      Text: text
     });
 
     const response = await translateClient.send(command);
-    return response.TranslatedTexts[0];
+    return response.TranslatedText;
   } catch (error) {
     console.error('Error translating text:', error);
-    return error; // Fallback to original text if translation fails
+    return text; // Fallback to original text if translation fails
   }
 };
-
-
 
 
 /* Configure Transcribe */
