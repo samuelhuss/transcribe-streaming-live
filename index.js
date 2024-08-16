@@ -170,7 +170,7 @@ const mergeMP4WithSRT = async function mergedMP4WithSRT(filePath) {
   const mergedMp4FilePath = path.join(mergedMp4Dir, mp4MergedFile);
 
   // We'll assume mp4 is already in here
-  const ffmpegCmd = `ffmpeg -hide_banner -loglevel error -i ${mp4FilePath} -i ${srtFilePath} -map 0:v -map 0:a -c copy -map 1 -c:s:0 mov_text -metadata:s:s:0 language=eng ${mergedMp4FilePath}`;
+  const ffmpegCmd = `ffmpeg -hide_banner -loglevel error -i ${mp4FilePath} -i ${srtFilePath} -map 0:v -map 0:a -c copy -map 1 -c:s:0 mov_text -metadata:s:s:0 language=por -sub_charenc ISO-8859-1 ${mergedMp4FilePath}`;
   console.log(ffmpegCmd);
   exec(ffmpegCmd, (error, stdout, stderr) => {
     if (error) {
@@ -219,7 +219,7 @@ const generateSRTFifo = (transcript) => {
   srtOutput += '\0';
 
   console.log(srtOutput);
-  fs.writeSync(fifoWs, utf8.encode(srtOutput));
+  fs.writeSync(fifoWs, srtOutput);
 };
 
 const generateSRTForSegment = async (filePath, segmentNumber) => {
